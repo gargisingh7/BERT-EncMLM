@@ -185,7 +185,7 @@ def main(cli_args):
     with open(config_filename) as f:
         args = AttrDict(json.load(f))
     logger.info("Training/evaluation parameters {}".format(args))
-
+    args.mlm_probability=0.15
     args.output_dir = os.path.join(args.ckpt_dir, args.output_dir)
 
     init_logger()
