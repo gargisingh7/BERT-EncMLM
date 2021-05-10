@@ -120,7 +120,7 @@ def train(args,
         epoch_iterator = tqdm(train_dataloader, desc="Iteration")
         for step, batch in enumerate(epoch_iterator):
             model.train()
-            batch = tuple(t.to(args.device) for t in batch)
+#             batch = tuple(t.to(args.device) for t in batch)
 
             temp_inputs, temp_masked_labels = mask_tokens(batch[0], tokenizer, args)
             temp_inputs = temp_inputs.to(args.device)
