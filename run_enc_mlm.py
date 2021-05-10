@@ -17,12 +17,12 @@ from transformers import (
     get_linear_schedule_with_warmup
 )
 
-from model_def_seq_mlm import BertForEncoderMLM
+from model import BertForEncoderMLM
 from utils import (
     init_logger,
     set_seed
 )
-from data_loader_def_seq import (
+from data_loader import (
     load_and_cache_examples
 )
 
@@ -74,7 +74,7 @@ def train(args,
           train_dataset):
     train_sampler = RandomSampler(train_dataset)
     train_dataloader = DataLoader(train_dataset, sampler=train_sampler, batch_size=args.train_batch_size)
-     if args.max_steps > 0:
+    if args.max_steps > 0:
         t_total = args.max_steps
         args.num_train_epochs = args.max_steps // (len(train_dataloader) // args.gradient_accumulation_steps) + 1
     else:
@@ -225,7 +225,7 @@ def main(cli_args):
 if __name__ == '__main__':
     cli_parser = argparse.ArgumentParser()
 
-    cli_parser.add_argument("--taxonomy", type=str, required=True, help="Taxonomy (original, ekman, group)")
+    # cli_parser.add_argument("--taxonomy", type=str, required=True, help="Taxonomy (original, ekman, group)")
 
     cli_args = cli_parser.parse_args()
 
