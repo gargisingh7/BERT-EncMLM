@@ -118,6 +118,9 @@ class DataProcessor(object):
             guid = "%s-%s" % (set_type, i)
             line = line.strip()
             items = line.split("\t")
+            print("----------------------------------------------------------------------------")
+            print(items)
+            print("----------------------------------------------------------------------------")
             text_a = items[0]
             text_b = items[1]
             # label = list(map(int, items[1].split(",")))
