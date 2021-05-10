@@ -118,15 +118,16 @@ class DataProcessor(object):
             guid = "%s-%s" % (set_type, i)
             line = line.strip()
             items = line.split("\t")
-            print("----------------------------------------------------------------------------")
-            print(items)
-            print("----------------------------------------------------------------------------")
-            text_a = items[0]
-            text_b = items[1]
-            # label = list(map(int, items[1].split(",")))
-            if i % 5000 == 0:
-                logger.info(line)
-            examples.append(InputExample(guid=guid, text_a=text_a, text_b=text_b))
+#             print("----------------------------------------------------------------------------")
+#             print(items)
+#             print("----------------------------------------------------------------------------")
+            if len(items)==2:
+                text_a = items[0]
+                text_b = items[1]
+                # label = list(map(int, items[1].split(",")))
+                if i % 5000 == 0:
+                        logger.info(line)
+                examples.append(InputExample(guid=guid, text_a=text_a, text_b=text_b))
         return examples
 
     def get_examples(self, mode):
