@@ -182,7 +182,8 @@ def train(args,
 
         if args.max_steps > 0 and global_step > args.max_steps:
             break
-    print("Losses:  "loss_list)
+    print("Losses:  ")
+    print(loss_list)
     output_eval_file = os.path.join(output_dir, "loss.txt")
     with open(output_eval_file, "w") as f_w:
         for i in loss_list:
