@@ -144,6 +144,9 @@ def train(args,
             loss.backward()
             tr_loss += loss.item()
             loss_list.append(loss.item)
+            print(loss_list)
+            import sys
+            sys.exit()
             
             if (step + 1) % args.gradient_accumulation_steps == 0 or (
                     len(train_dataloader) <= args.gradient_accumulation_steps
