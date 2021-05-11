@@ -145,7 +145,8 @@ def train(args,
             tr_loss += loss.item()
             print(loss)
             print(loss.item())
-            loss_list.append(loss)
+            k = loss.item()
+            loss_list.append(k)
             print(loss_list)
             import sys
             sys.exit()
