@@ -155,27 +155,29 @@ def train(args,
                 scheduler.step()
                 model.zero_grad()
                 global_step += 1
-                if args.save_steps > 0 and global_step % args.save_steps == 0:
+#                 if args.max_steps > 0 and global_step > args.max_steps:
+#                     break
+                #if args.save_steps > 0 and global_step % args.save_steps == 0:
                     # Save model checkpoint
-                    output_dir = os.path.join(args.output_dir, "checkpoint-{}".format(global_step))
-                    if not os.path.exists(output_dir):
-                        os.makedirs(output_dir)
-                    model_to_save = (
-                        model.module if hasattr(model, "module") else model
-                    )
-                    model_to_save.save_pretrained(output_dir)
-                    tokenizer.save_pretrained(output_dir)
+              
+        output_dir = os.path.join(args.output_dir, "checkpoint-{}".format(global_step))
+        if not os.path.exists(output_dir):
+            os.makedirs(output_dir)
+        model_to_save = (
+            model.module if hasattr(model, "module") else model
+        )
+        model_to_save.save_pretrained(output_dir)
+        tokenizer.save_pretrained(output_dir)
 
-                    torch.save(args, os.path.join(output_dir, "training_args.bin"))
-                    logger.info("Saving model checkpoint to {}".format(output_dir))
+        torch.save(args, os.path.join(output_dir, "training_args.bin"))
+        logger.info("Saving model checkpoint to {}".format(output_dir))
 
-                    if args.save_optimizer:
-                        torch.save(optimizer.state_dict(), os.path.join(output_dir, "optimizer.pt"))
-                        torch.save(scheduler.state_dict(), os.path.join(output_dir, "scheduler.pt"))
-                        logger.info("Saving optimizer and scheduler states to {}".format(output_dir))
+        if args.save_optimizer:
+            torch.save(optimizer.state_dict(), os.path.join(output_dir, "optimizer.pt"))
+            torch.save(scheduler.state_dict(), os.path.join(output_dir, "scheduler.pt"))
+            logger.info("Saving optimizer and scheduler states to {}".format(output_dir))
 
-            if args.max_steps > 0 and global_step > args.max_steps:
-                break
+            
         output_eval_file = os.path.join(output_dir, "loss-{}.txt".format(global_step))
         with open(output_eval_file, "w") as f_w:
             for i in loss_list:
@@ -218,10 +220,10 @@ def main(cli_args):
     # special_tokens_dict = {'additional_special_tokens': ['[STATE]','[ACTION]']}
     # num_added_toks = tokenizer.add_special_tokens(special_tokens_dict)
     # model.resize_token_embeddings(len(tokenizer))
-    '''
-    checkpoint = "ckpt/original/bert-base-cased-goemotions-original/checkpoint-86000"
-    model = BertForMultiLabelClassification.from_pretrained(checkpoint)
-'''
+    
+#     checkpoint = "/content/gdrive/MyDrive/ckpt/bert-base-cased/checkpoint-20000"
+#     model = BertForEncoderMLM.from_pretrained(checkpoint)
+    
     # GPU or CPU
     args.device = "cuda" if torch.cuda.is_available() and not args.no_cuda else "cpu"
     model.to(args.device)
