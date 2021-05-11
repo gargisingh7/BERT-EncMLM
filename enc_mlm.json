@@ -23,7 +23,7 @@
   "tokenizer_name_or_path": "bert-base-cased",
   "seed": 42,
   "train_batch_size": 16,
-  "logging_steps": 1000,
-  "save_steps": 1000,
+  "logging_steps": 10000,
+  "save_steps": 10000,
   "learning_rate": 5e-5
 }
