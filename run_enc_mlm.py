@@ -144,7 +144,7 @@ def train(args,
             loss.backward()
             tr_loss += loss.item()
             print(loss)
-            loss_list.append(loss.data.cpu().numpy()[0])
+            loss_list.append(loss.data.numpy())
             print(loss_list)
             import sys
             sys.exit()
@@ -183,9 +183,12 @@ def train(args,
 
             
         output_eval_file = os.path.join(output_dir, "loss-{}.txt".format(global_step))
+        print("Losses:")
+        print(loss_list)
         with open(output_eval_file, "w") as f_w:
             for i in loss_list:
                 print(i,file=f_w)
+            
         if args.max_steps > 0 and global_step > args.max_steps:
             break
     print("Losses:  ")
