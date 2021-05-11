@@ -144,7 +144,8 @@ def train(args,
             loss.backward()
             tr_loss += loss.item()
             print(loss)
-            loss_list.append(loss.data.cpu.numpy())
+            print(loss.item())
+            loss_list.append(loss)
             print(loss_list)
             import sys
             sys.exit()
