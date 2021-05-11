@@ -1,7 +1,7 @@
 {
   "task": "enc_mlm",
   "data_dir": ".",
-  "ckpt_dir": "ckpt",
+  "ckpt_dir": "/content/gdrive/MyDrive/ckpt",
   "output_dir": "bert-base-cased",
   "train_file": "train.tsv",
   "evaluate_test_during_training": false,
