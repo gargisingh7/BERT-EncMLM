@@ -116,6 +116,7 @@ def train(args,
 
     model.zero_grad()
     train_iterator = trange(int(args.num_train_epochs), desc="Epoch")
+    loss_list = []
     for _ in train_iterator:
         epoch_iterator = tqdm(train_dataloader, desc="Iteration")
         for step, batch in enumerate(epoch_iterator):
@@ -142,6 +143,7 @@ def train(args,
 
             loss.backward()
             tr_loss += loss.item()
+            loss_list.append(loss.item)
             if (step + 1) % args.gradient_accumulation_steps == 0 or (
                     len(train_dataloader) <= args.gradient_accumulation_steps
                     and (step + 1) == len(train_dataloader)
@@ -176,7 +178,11 @@ def train(args,
 
         if args.max_steps > 0 and global_step > args.max_steps:
             break
-
+    print("Losses:  "loss_list)
+    output_eval_file = os.path.join(output_dir, "loss.txt")
+    with open(output_eval_file, "w") as f_w:
+        for i in loss_list:
+            print(i,file=f_w)
     return global_step, tr_loss / global_step
 
 def main(cli_args):
