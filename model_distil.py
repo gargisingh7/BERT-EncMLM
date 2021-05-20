@@ -2,6 +2,8 @@ import torch.nn as nn
 from transformers import DistilBertPreTrainedModel, DistilBertModel
 
 from transformers.modeling_bert import BertOnlyMLMHead 
+from transformers.activations import gelu
+
 from torch.nn import CrossEntropyLoss #### db
 #hugginface/transformers github:  git checkout c50aa67
 
