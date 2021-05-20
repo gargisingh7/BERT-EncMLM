@@ -17,7 +17,7 @@ from transformers import (
     get_linear_schedule_with_warmup
 )
 
-from model_distil import BertForEncoderMLM
+from model_distil import DistilBertForEncoderMLM
 from utils import (
     init_logger,
     set_seed
