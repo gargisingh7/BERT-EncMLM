@@ -131,8 +131,8 @@ def train(args,
             inputs = {
                 "input_ids": temp_inputs, 
                 "attention_mask": batch[1],
-                "token_type_ids": batch[2],
-                "masked_lm_labels": temp_masked_labels
+#                 "token_type_ids": batch[2],
+                "labels": temp_masked_labels
             }
             outputs = model(**inputs)
 
