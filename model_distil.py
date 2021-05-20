@@ -24,13 +24,6 @@ class DistilBertForEncoderMLM(DistilBertPreTrainedModel):
     def set_output_embeddings(self, new_embeddings):
         self.vocab_projector = new_embeddings
 
-[DOCS]    @add_start_docstrings_to_model_forward(DISTILBERT_INPUTS_DOCSTRING.format("batch_size, num_choices"))
-    @add_code_sample_docstrings(
-        tokenizer_class=_TOKENIZER_FOR_DOC,
-        checkpoint=_CHECKPOINT_FOR_DOC,
-        output_type=MaskedLMOutput,
-        config_class=_CONFIG_FOR_DOC,
-    )
     def forward(
         self,
         input_ids=None,
