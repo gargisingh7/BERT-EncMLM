@@ -203,7 +203,7 @@ def train(args,
 
 def main(cli_args):
     # Read from config file and make args
-    config_filename = "enc_mlm.json"
+    config_filename = "enc_mlm_distil.json"
     with open(config_filename) as f:
         args = AttrDict(json.load(f))
     logger.info("Training/evaluation parameters {}".format(args))
