@@ -2,7 +2,7 @@
 {
   "task": "enc_mlm_distil",
   "data_dir": ".",
-  "ckpt_dir": "/content/gdrive/MyDrive/ckpt",
+  "ckpt_dir": "/content/gdrive/MyDrive/distil-ckpt",
   "output_dir": "distilbert-base-cased",
   "train_file": "train.tsv",
   "evaluate_test_during_training": false,
