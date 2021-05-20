@@ -64,7 +64,7 @@ class DistilBertForEncoderMLM(DistilBertPreTrainedModel):
         if labels is not None:
             mlm_loss = self.mlm_loss_fct(prediction_logits.view(-1, prediction_logits.size(-1)), labels.view(-1))
 
-        outputs = (mlm_loss,) + hidden_states
+        outputs = (mlm_loss,) #+ hidden_states
 
 #         sequence_output = outputs[0]
 #         prediction_scores = self.cls_lm(sequence_output)
