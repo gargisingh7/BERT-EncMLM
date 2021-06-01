@@ -226,9 +226,9 @@ def main(cli_args):
         args.model_name_or_path,
         config=config,
     )
-    # special_tokens_dict = {'additional_special_tokens': ['[STATE]','[ACTION]']}
-    # num_added_toks = tokenizer.add_special_tokens(special_tokens_dict)
-    # model.resize_token_embeddings(len(tokenizer))
+    special_tokens_dict = {'additional_special_tokens': ['[STATE]','[ACTION]']}
+    num_added_toks = tokenizer.add_special_tokens(special_tokens_dict)
+    model.resize_token_embeddings(len(tokenizer))
     
     checkpoint = "/content/gdrive/MyDrive/distil-ckpt/distilbert-base-cased/checkpoint-13594"
     model = DistilBertForEncoderMLM.from_pretrained(checkpoint)
