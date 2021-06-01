@@ -230,8 +230,8 @@ def main(cli_args):
     num_added_toks = tokenizer.add_special_tokens(special_tokens_dict)
     model.resize_token_embeddings(len(tokenizer))
     
-    checkpoint = "/content/gdrive/MyDrive/distil-ckpt/distilbert-base-cased/checkpoint-13594"
-    model = DistilBertForEncoderMLM.from_pretrained(checkpoint)
+#     checkpoint = "/content/gdrive/MyDrive/distil-ckpt/distilbert-base-cased/checkpoint-13594"
+#     model = DistilBertForEncoderMLM.from_pretrained(checkpoint)
     
     # GPU or CPU
     args.device = "cuda" if torch.cuda.is_available() and not args.no_cuda else "cpu"
