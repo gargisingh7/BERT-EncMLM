@@ -4,7 +4,7 @@
   "data_dir": ".",
   "ckpt_dir": "/content/gdrive/MyDrive/distil-ckpt",
   "output_dir": "distilbert-base-cased",
-  "train_file": "train.tsv",
+  "train_file": "train_2.tsv",
   "evaluate_test_during_training": false,
   "eval_all_checkpoints": true,
   "save_optimizer": false,
